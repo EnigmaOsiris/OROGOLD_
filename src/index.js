@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-//const conection = require('./config/databse');
+const conection = require('./config/databse');
 
 app.set('port',process.env.PORT||3033);
 
