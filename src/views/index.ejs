@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.css" crossorigin="anonymous">
     <link href="/css/gold.css" rel="stylesheet" type="text/css">
     <title>Oro gold</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    
+
     <nav class="navbar navbar-dark bg-dark oro-navbar">
         <div class="container">
             <a class="navbar-brand">
@@ -39,29 +39,23 @@
                 <div class="col-12 col-sm-5 left-content">
                     <div class="oro-form">
                         <h2 class="oro-form-title">Reserva ahora tu cita</h2>
-                        <form id="form-contact" action="/reservar" method="POST">
+                        <form id="form-contact" >
                             <div class="form-group">
-                                <input type="text" class="form-control " id="exampleFormControlInput1" name="nombre" placeholder="nombre">
+                                <input type="text" class="form-control " id="nombre" name="nombre"
+                                    placeholder="nombre">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control " id="exampleFormControlInput1" name="email" placeholder="email">
+                                <input type="text" class="form-control " id="email" name="email"
+                                    placeholder="email">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control " id="exampleFormControlInput1" name="telefono" placeholder="telefono">
+                                <input type="text" class="form-control " id="telefono" name="telefono"
+                                    placeholder="telefono">
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-block btn-oro-submit" type="submit">Reservar ahora</button>
+                                <button class="btn btn-block btn-oro-submit" type="button" onclick="save()">Reservar ahora</button>
                             </div>
                         </form>
-                        <% if(result && result.status==="success"){%>
-                            <div class="alert alert-success" role="alert">
-                                Reservado!
-                            </div>
-                        <% } else if(result && result.status==="error"){ %>
-                            <div class="alert alert-danger" role="alert">
-                                Usted ya tiene una Cita!!
-                            </div>
-                        <% }%>
                     </div>
                 </div>
             </div>
@@ -143,7 +137,7 @@
                         <div class="item-crs"> <img src="assets/img/photo-1560944527-a4a429848866.jpg" alt=""> </div>
                     </div>
                 </section>
-            </div>            
+            </div>
         </div>
     </section>
     <section class="schedule">
@@ -214,12 +208,18 @@
             </div>
         </nav>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <script>        
-        $(document).ready(function() {
+    <script>
+        $(document).ready(function () {
             $(".owl-carousel").owlCarousel({
                 loop: true,
                 autoplay: true,
@@ -237,51 +237,68 @@
 
         }
 
-        function showResult(result) {
-            
+        function save() {            
+            fetch("/reservar", {   method: 'POST',                             
+                body: JSON.stringify({
+                    nombre:$("#nombre").val(),
+                    email:$("#email").val(),
+                    telefono:$("#telefono").val()
+                }),
+                headers:{     'Content-Type': 'application/json'   } })
+                .then(res => res.json()) 
+                .catch(error => console.error('Error:', error)) 
+                .then(response => {
+                    if (response.result.status==="success") {
+                        Swal.fire({   position: 'center',   icon: 'success',   title: 'Reservada!!!',   showConfirmButton: false,   timer: 1500 })
+                        $("#form-contact").trigger("reset")
+                    } else {
+                        Swal.fire({   position: 'center',   icon: 'error',   title: 'Ya tienes Cita!!',   showConfirmButton: false,   timer: 1500 })
+                    }
+                });
         }
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibWVlcGxhYiIsImEiOiJjanFneWZyOTI1a25oNGNzNzJoeXVzdnNwIn0.J1Y1ma8zcZJtp4-6CPJivQ';
-	var map = new mapboxgl.Map({
-		container: 'map', // container id
-		style: 'mapbox://styles/mapbox/streets-v10',
-		center: [-99.16165888, 19.42652978], // starting position
-		zoom: 11 // starting zoom
-	});
-	
-	//load Geojson data
-	var geojson = {
-		type : 'FeatureCollection',
-		features: [{
-			type : 'Feature',
-			geometry:{
-				type : 'Point',
-				coordinates : [-99.16165888, 19.42652978]
-			},
-			properties : {
-				title : 'Oficina',
-				descripcion : 'Oficina' 
-			}
-		}
-	]};
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/streets-v10',
+            center: [-99.16165888, 19.42652978], // starting position
+            zoom: 11 // starting zoom
+        });
 
-	//add makers to map
-	geojson.features.forEach(function (marker) {
-		//create a HTML element for each feature
-		var ele = document.createElement('div');
-		ele.className = 'marker';
+        //load Geojson data
+        var geojson = {
+            type: 'FeatureCollection',
+            features: [{
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-99.16165888, 19.42652978]
+                },
+                properties: {
+                    title: 'Oficina',
+                    descripcion: 'Oficina'
+                }
+            }
+            ]
+        };
 
-		//make a marker for each feature and add to the map
-		new mapboxgl.Marker(ele)
-			.setLngLat(marker.geometry.coordinates)
-			.addTo(map);
+        //add makers to map
+        geojson.features.forEach(function (marker) {
+            //create a HTML element for each feature
+            var ele = document.createElement('div');
+            ele.className = 'marker';
+
+            //make a marker for each feature and add to the map
+            new mapboxgl.Marker(ele)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
 
 
-		new mapboxgl.Marker(ele)
-			.setLngLat(marker.geometry.coordinates)
-			.setPopup(new mapboxgl.Popup({offset : 25})//add popups
-			.setHTML('<h3>'+marker.properties.title+ '</h3><h4>'+marker.properties.descripcion+'</h4>')).addTo(map);
-	});
+            new mapboxgl.Marker(ele)
+                .setLngLat(marker.geometry.coordinates)
+                .setPopup(new mapboxgl.Popup({ offset: 25 })//add popups
+                    .setHTML('<h3>' + marker.properties.title + '</h3><h4>' + marker.properties.descripcion + '</h4>')).addTo(map);
+        });
     </script>
 </body>
 
