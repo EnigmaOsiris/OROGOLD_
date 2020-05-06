@@ -12,9 +12,11 @@
 
     <link rel="stylesheet" href="js/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="js/assets/owl.theme.default.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
 
 <body>
+    
     <nav class="navbar navbar-dark bg-dark oro-navbar">
         <div class="container">
             <a class="navbar-brand">
@@ -37,20 +39,29 @@
                 <div class="col-12 col-sm-5 left-content">
                     <div class="oro-form">
                         <h2 class="oro-form-title">Reserva ahora tu cita</h2>
-                        <form id="form-contact">
+                        <form id="form-contact" action="/reservar" method="POST">
                             <div class="form-group">
-                                <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="nombre">
+                                <input type="text" class="form-control " id="exampleFormControlInput1" name="nombre" placeholder="nombre">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="email">
+                                <input type="text" class="form-control " id="exampleFormControlInput1" name="email" placeholder="email">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="telefono">
+                                <input type="text" class="form-control " id="exampleFormControlInput1" name="telefono" placeholder="telefono">
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-block btn-oro-submit">Reservar ahora</button>
+                                <button class="btn btn-block btn-oro-submit" type="submit">Reservar ahora</button>
                             </div>
                         </form>
+                        <% if(result && result.status==="success"){%>
+                            <div class="alert alert-success" role="alert">
+                                Reservado!
+                            </div>
+                        <% } else if(result && result.status==="error"){ %>
+                            <div class="alert alert-danger" role="alert">
+                                Usted ya tiene una Cita!!
+                            </div>
+                        <% }%>
                     </div>
                 </div>
             </div>
@@ -224,6 +235,10 @@
                 block: 'end'
             });
 
+        }
+
+        function showResult(result) {
+            
         }
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibWVlcGxhYiIsImEiOiJjanFneWZyOTI1a25oNGNzNzJoeXVzdnNwIn0.J1Y1ma8zcZJtp4-6CPJivQ';
