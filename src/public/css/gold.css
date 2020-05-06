@@ -1,0 +1,271 @@
+:root {
+    --gold: goldenrod;
+    --light: #fff;
+}
+
+.oro-navbar {
+    background-color: #000 !important;
+}
+
+.oro-navbar .brand-main-title {
+    display: block;
+    font-size: 0.9em;
+    color: var(--gold);
+}
+
+.oro-navbar .brand-sub-title {
+    display: block;
+    font-size: 0.6em;
+    text-align: center;
+    color: var(--gold);
+}
+
+.oro-navbar .oro-contact {
+    color: var(--gold);
+}
+
+.oro-navbar .oro-contact-button {
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    margin-left: 25px;
+}
+
+.oro-slider {
+    background-color: #000;
+    background-image: url('./../assets/img/bg-principal.jpg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 600px;
+}
+
+.oro-slider .slider-content {
+    height: 100%;
+    width: 100%;
+}
+
+.oro-slider .slider-content .right-content {
+    padding-top: 200px;
+}
+
+.oro-slider .slider-content .left-content {
+    padding-top: 120px;
+}
+
+.oro-slider .slider-content .right-content h1 {
+    color: var(--gold);
+}
+
+.oro-slider .slider-content .right-content h3 {
+    color: var(--light);
+}
+
+.oro-slider .slider-content .left-content .oro-form {
+    background-color: var(--light);
+    border-radius: 5px;
+    padding: 10px;
+    padding-top: 25px;
+}
+
+.oro-slider .slider-content .left-content .oro-form .btn-oro-submit {
+    background-color: var(--gold);
+    color: var(--light);
+}
+
+.treatments-section .treatments-content {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.treatments-section .treatments-title {
+    color: var(--gold);
+}
+
+.treatments-section .treatments-content .oro-card .oro-card-header .img-card-one {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    background-image: url('./../assets/img/photo-1516238840914-94dfc0c873ae.jpg');
+    background-position: center;
+    background-size: cover;
+    background-position: bottom;
+    margin: 5px auto;
+    margin-bottom: 20px;
+}
+
+.treatments-section .treatments-content .oro-card .oro-card-header .img-card-two {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    background-image: url('./../assets/img/photo-1515377905703-c4788e51af15.jpg');
+    background-position: center;
+    background-size: cover;
+    background-position: bottom;
+    margin: 5px auto;
+    margin-bottom: 20px;
+}
+
+.treatments-section .treatments-content .oro-card .oro-card-header .img-card-three {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    background-image: url('./../assets/img/photo-1552693673-1bf958298935.jpg');
+    background-position: center;
+    background-size: cover;
+    background-position: bottom;
+    margin: 5px auto;
+    margin-bottom: 20px;
+}
+
+.treatments-section .treatments-content .oro-card .oro-card-title {
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.about {
+    overflow-x: hidden;
+}
+
+.about .about-content {
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.about .about-top {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.578), rgb(0, 0, 0)), url('./../assets/img/photo-1520473378652-85d9c4aee6cf.jpg');
+}
+
+.about .about-top>div>h2 {
+    color: yellow;
+}
+
+.about .about-top>div>p {
+    color: var(--light);
+}
+
+.about .about-bottom .gallery {
+    /* width: 100% !important;
+    height: 250px;
+    max-height: 250px; */
+}
+
+.about .about-bottom .gallery .item-gallery-one {
+    width: 25% !important;
+    height: 250px;
+    max-height: 250px;
+    background-image: url('./../assets/img/photo-1489659639091-8b687bc4386e.jpg');
+    background-size: cover;
+    display: inline-block;
+    margin: 0px !important;
+}
+
+.about .about-bottom .gallery .item-gallery-two {
+    width: 25% !important;
+    height: 250px;
+    max-height: 250px;
+    background-image: url('./../assets/img/photo-1554057009-6798cb3d4a04.jpg');
+    background-size: cover;
+    display: inline-block;
+    margin: 0px !important;
+}
+
+.about .about-bottom .gallery .item-gallery-three {
+    width: 23% !important;
+    height: 250px;
+    max-height: 250px;
+    background-image: url('./../assets/img/photo-1531853121101-cb94c8ed218d.jpg');
+    background-size: cover;
+    display: inline-block;
+    margin: 0px !important;
+}
+
+.about .about-bottom .gallery .item-gallery-fourth {
+    width: 26% !important;
+    height: 250px;
+    max-height: 250px;
+    background-image: url('./../assets/img/photo-1560944527-a4a429848866.jpg');
+    background-size: cover;
+    display: inline-block;
+    margin: 0px !important;
+}
+
+.schedule {
+    background-color: rgb(251, 251, 251);
+}
+
+.schedule .schedule-content {
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.schedule .schedule-content .schedule-detail h2 {
+    color: var(--gold);
+    font-weight: 550;
+}
+
+.schedule .schedule-content .schedule-detail button {
+    width: 200px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.schedule .schedule-content .schedule-detail button:hover {
+    background-color: black;
+    border: 2px solid white;
+    color: white;
+}
+
+.poster {
+    padding-bottom: 50px;
+}
+
+.poster .poster-content {
+    background-image: url("./../assets/img/photo-1560944527-a4a429848866.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 350px;
+}
+
+.information {
+    padding-bottom: 90px;
+}
+
+.information h3 {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.information button {
+    width: 250px;
+    height: 50px;
+    background-color: var(--gold);
+    color: white;
+}
+
+footer {
+    padding-top: 35px;
+    background-color: black;
+    height: 300px;
+}
+
+footer .oro-navbar .oro-contact .mail {
+    color: var(--gold);
+}
+
+footer .oro-navbar .oro-contact .phone {
+    color: var(--gold);
+    margin-left: 15px;
+}
+
+.owl-carousel {
+    overflow: hidden;
+    height: 300px;
+}
